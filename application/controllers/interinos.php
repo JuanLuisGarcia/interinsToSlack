@@ -15,7 +15,7 @@ class Interinos extends CI_Controller {
 	*/
 	public function chekUser($content){
 		$this->load->library('slack');
-		$teacher_name= " FRAU FRAasdasdasNCO, BERNARDO";
+		$teacher_name= " FRAU FRANCO, BERNARDO";
 		$isAdjudicated = false;
 		foreach ($content as $adjudication) {
 

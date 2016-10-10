@@ -6,10 +6,18 @@ class CI_Parser
     /mean time to response in apps.caib.es 10secs ... patience
     */
     public function getContent($contentArray = null){
+        $http_response_header = array();
         $url = "https://apps.caib.es/sadperdoc5front/interins/resultatsAdjudicacio.do?convocatoria=101&codiFuncio=&codiCentre=";
         $content = utf8_encode(file_get_contents($url));
+        $this->checkService($http_response_header);
         if(!empty($content)){
             return $this->parseResponse($content);      
+        }
+    }
+    public function checkService($headers){
+        if( $headers[0] !== "HTTP/1.1 200 OK"){
+            echo $headers[0]." El servicio esta tenporalmente caido , intentelo más tarde ";
+            die();
         }
     }
 
